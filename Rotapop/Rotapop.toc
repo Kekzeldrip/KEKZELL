@@ -1,0 +1,13 @@
+## Interface: 120000
+## Version: v12.0.0-0.1.0
+## Title: Rotapop
+## Author: Rotapop Team
+## IconTexture: Interface\AddOns\Rotapop\Textures\LOGO.blp
+## Notes: SimC-based rotation helper for Patch 12.x, successor to Hekili.
+## SavedVariables: RotapopDB
+
+Rotapop.lua
+CooldownAdapter.lua
+StateCache.lua
+SimEngine.lua
+UI.lua
