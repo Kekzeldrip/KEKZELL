@@ -153,13 +153,22 @@ end
 --- Bulk-set tracked spells from a list.
 -- @param spellList  table — array of spellIDs, e.g. {12345, 67890, ...}
 function StateCache:SetTrackedSpells(spellList)
-    wipe(trackedSpells)
-    wipe(spellCache)
+    -- Clear only entries that are no longer needed; repopulate in one pass.
+    local newTracked = {}
     if spellList then
         for _, id in ipairs(spellList) do
-            trackedSpells[id] = true
+            newTracked[id] = true
         end
     end
+
+    -- Remove cache entries for spells no longer tracked.
+    for id in pairs(trackedSpells) do
+        if not newTracked[id] then
+            spellCache[id] = nil
+        end
+    end
+
+    trackedSpells = newTracked
     RefreshAllTracked()
 end
 

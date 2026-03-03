@@ -244,8 +244,10 @@ local function CompileCondition(condStr, spellMap)
     lua = ResolveReferences(lua, spellMap)
 
     -- Wrap in a function body.
+    -- WoW Lua uses 5.1 (loadstring); use load as fallback for forward compat.
     local code = "return function(env) return " .. lua .. " end"
-    local fn, err = loadstring(code)
+    local compile = loadstring or load
+    local fn, err = compile(code)
     if not fn then
         -- Compilation failed; log and return nil (entry always passes).
         print("|cFFFF0000Rotapop|r APL compile error: " .. tostring(err))
