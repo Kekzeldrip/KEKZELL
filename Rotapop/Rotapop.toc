@@ -1,13 +1,15 @@
-## Interface: 120000
-## Version: v12.0.0-0.1.0
+## Interface: 120001
 ## Title: Rotapop
-## Author: Rotapop Team
-## IconTexture: Interface\AddOns\Rotapop\Textures\LOGO.blp
-## Notes: SimC-based rotation helper for Patch 12.x, successor to Hekili.
-## SavedVariables: RotapopDB
+## Notes: SimC-based rotation assistant for WoW 12.x
+## Author: Rotapop Contributors
+## Version: 0.1.0
+## DefaultState: enabled
 
+Core/EventBus.lua
+Core/CooldownAdapter.lua
+Core/StateCache.lua
+Engine/SimEngine.lua
+Engine/APL/ShamanEnhancement.lua
+UI/DebugOverlay.lua
+UI/NextSpellDisplay.lua
 Rotapop.lua
-CooldownAdapter.lua
-StateCache.lua
-SimEngine.lua
-UI.lua

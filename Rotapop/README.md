@@ -46,13 +46,16 @@ Only the **state retrieval** is adapted to the new Cooldown model.
 
 ## Architecture
 
-| Module              | Purpose                                                       |
-|---------------------|---------------------------------------------------------------|
-| `Rotapop.lua`       | Main addon initialization & namespace setup                   |
-| `CooldownAdapter.lua` | Normalized spell-state via `C_Spell.*` APIs               |
-| `StateCache.lua`    | Event-driven invalidation/update of spell states              |
-| `SimEngine.lua`     | APL parser & priority engine (`GetNextSpell`)                 |
-| `UI.lua`            | Next-spell icon display + developer debug overlay             |
+| Module                              | Purpose                                                       |
+|-------------------------------------|---------------------------------------------------------------|
+| `Rotapop.lua`                       | Entry point, initial lookup build on PLAYER_LOGIN             |
+| `Core/EventBus.lua`                 | Centralized event dispatching, decouples modules              |
+| `Core/CooldownAdapter.lua`          | C_CooldownViewer as primary source, C_Spell fallback          |
+| `Core/StateCache.lua`               | Event-driven cache over CooldownAdapter                       |
+| `Engine/SimEngine.lua`              | APL priority engine with RegisterAction API                   |
+| `Engine/APL/ShamanEnhancement.lua`  | Enhancement Shaman APL (SimC port)                            |
+| `UI/NextSpellDisplay.lua`           | Next-spell icon with cooldown overlay                         |
+| `UI/DebugOverlay.lua`               | Dev-only debug overlay for tracked spell states               |
 
 ## No-Legacy Policy
 
